@@ -43,7 +43,7 @@ Utilização de computação evolutiva para otimizar cardápios através de:
 - **Seleção**: Torneio com 3 competidores
 - **Cruzamento**: Herança aleatória de refeições dos pais
 - **Mutação**: Por refeição completa ou por alimento individual
-- **Elitismo**: 10% dos melhores indivíduos preservados
+- **Elitismo**: Percentual configurável dos melhores indivíduos preservados (padrão: 10%)
 
 ### Variações Implementadas
 1. **Algoritmo Genético Básico** - Implementação padrão com seleção por torneio e mutação por refeição completa
@@ -63,6 +63,7 @@ Utilização de computação evolutiva para otimizar cardápios através de:
 TAMANHO_POPULACAO = 30      # Indivíduos por geração
 NUMERO_GERACOES = 1000      # Limite de evolução
 TAXA_MUTACAO = 0.5          # Probabilidade de mutação
+TAXA_ELITISMO = 0.1         # Percentual dos melhores preservados (10%)
 TAMANHO_TORNEIO = 3         # Seleção por torneio
 ALIMENTOS_POR_REFEICAO = 3  # Restrição prática
 ```
