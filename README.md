@@ -1,8 +1,8 @@
-# 🧬 Algoritmo Genético para Otimização Nutricional
-
-**Tech Challenge - 5IADT - Fase 2**
+# Tech Challenge - 5IADT - Fase 2
 
 ## 🎯 Definição do Problema
+
+Algoritmo Genético para Otimização Nutricional
 
 ### Descrição do Problema
 O planejamento nutricional consiste em:
