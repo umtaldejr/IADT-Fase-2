@@ -1,6 +1,6 @@
-# 🧬 Tech Challenge - 5IADT - Fase 2
+# 🧬 Algoritmo Genético para Otimização Nutricional
 
-**Algoritmo Genético para Otimização Nutricional**
+**Tech Challenge - 5IADT - Fase 2**
 
 ## 🎯 Definição do Problema
 
@@ -29,6 +29,13 @@ A base de dados utilizada provém da **Tabela Brasileira de Composição de Alim
 - **Repositório**: [GitHub - machine-learning-mocha/taco](https://github.com/machine-learning-mocha/taco/blob/main/formatados/alimentos.csv)
 
 ## 🧬 Abordagem da Solução
+
+### Representação Genética
+No contexto deste problema, a representação genética é estruturada da seguinte forma:
+
+- **Gene**: Um alimento específico (ex: "Arroz, tipo 1, cozido")
+- **Cromossomo**: Uma refeição completa com 3 alimentos (ex: café da manhã)
+- **Indivíduo**: Um cardápio completo com 3 refeições (café da manhã, almoço e jantar)
 
 ### Algoritmo Genético
 Utilização de computação evolutiva para otimizar cardápios através de:
