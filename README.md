@@ -1,6 +1,6 @@
-# 🧬 Algoritmo Genético para Otimização Nutricional
+# 🧬 Tech Challenge - 5IADT - Fase 2
 
-**Tech Challenge - 5IADT - Fase 2**
+**Algoritmo Genético para Otimização Nutricional**
 
 ## 🎯 Definição do Problema
 
