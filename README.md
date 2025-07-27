@@ -12,7 +12,7 @@ O planejamento nutricional consiste em:
 - Manter 3 alimentos por refeição
 
 ### Objetivo
-Encontrar combinações de alimentos que minimizem o desvio das metas nutricionais estabelecidas usando algoritmos genéticos.
+> Encontrar combinações de alimentos que minimizem o desvio das metas nutricionais estabelecidas usando algoritmos genéticos.
 
 ### Metas Nutricionais
 | Nutriente | Meta Diária |
