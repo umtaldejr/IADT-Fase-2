@@ -54,11 +54,11 @@ POPULACAO = 30 | GERACOES = 1000 | MUTACAO = 50% | ELITISMO = 10%
 
 ### Performance dos Algoritmos
 
-| Algoritmo | Fitness | Energia (kcal) | Proteína (g) | Carboidrato (g) | Lipídeos (g) |
-|-----------|---------|----------------|--------------|-----------------|---------------|
-| **AG Básico** | -14.20 | 0.00 | +2.00 | -9.50 | +2.70 |
-| **AG + Elitismo** | -7.20 | -1.00 | -4.80 | +0.80 | -0.60 |
-| **AG + Elitismo + Granular** | -8.10 | 0.00 | -2.00 | -0.80 | +5.30 |
+| Algoritmo | Energia (kcal) | Carboidrato (g) | Proteína (g) | Lipídeos (g) | Fitness |
+|-----------|----------------|-----------------|--------------|---------------|---------|
+| **AG Básico** | 0.00 | -9.50 | +2.00 | +2.70 | -14.20 |
+| **AG + Elitismo** | -1.00 | +0.80 | -4.80 | -0.60 | -7.20 |
+| **AG + Elitismo + Granular** | 0.00 | -0.80 | -2.00 | +5.30 | -8.10 |
 
 <img src="results.png" />
 
