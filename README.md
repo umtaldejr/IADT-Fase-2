@@ -60,6 +60,8 @@ POPULACAO = 30 | GERACOES = 1000 | MUTACAO = 50% | ELITISMO = 10%
 | **AG + Elitismo** | -7.20 | 100.0% | 93.6% | 99.7% | 99.1% |
 | **AG + Elitismo + Granular** | -8.10 | 100.0% | 97.3% | 99.7% | 92.4% |
 
+<img src="results.png" />
+
 ## 🔬 Conclusão
 
 ### Eficácia dos Algoritmos Genéticos
