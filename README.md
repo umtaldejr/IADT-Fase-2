@@ -1,107 +1,102 @@
 # Tech Challenge - 5IADT - Fase 2
 
-## 🎯 Definição do Problema
+## 🎯 Descrição do Problema
 
-Algoritmo Genético para Otimização Nutricional
+Este projeto aborda a **otimização de cardápios nutricionais** usando algoritmos genéticos, onde o objetivo é encontrar combinações de alimentos que minimizem o desvio das metas nutricionais estabelecidas.
 
-### Descrição do Problema
-O planejamento nutricional consiste em:
-- Selecionar alimentos de uma base de dados nutricional
-- Combinar esses alimentos em três refeições (café da manhã, almoço e jantar)
-- Otimizar simultaneamente múltiplos nutrientes (energia, proteína, carboidratos, lipídeos)
-- Manter 3 alimentos por refeição
-
-### Objetivo
-> Encontrar combinações de alimentos que minimizem o desvio das metas nutricionais estabelecidas usando algoritmos genéticos.
+### Desafio
+- Selecionar alimentos da base TACO 2011 (Tabela Brasileira de Composição de Alimentos)
+- Combinar 3 alimentos por refeição em cardápios de 3 refeições diárias
+- Otimizar simultaneamente 4 nutrientes: energia, proteína, carboidratos e lipídeos
 
 ### Metas Nutricionais
-| Nutriente | Meta Diária |
+| Nutriente | Meta Diária | 
 |-----------|-------------|
 | Energia | 2000 kcal |
-| Proteína | 75g |
-| Carboidrato | 275g |
-| Lipídeos | 70g |
+| Proteína | 75g (15% VET) |
+| Carboidrato | 275g (55% VET) |
+| Lipídeos | 70g (30% VET) |
 
-### Base de Dados Nutricional
-A base de dados utilizada provém da **Tabela Brasileira de Composição de Alimentos (TACO 2011)**, desenvolvida pelo NEPA (Núcleo de Estudos e Pesquisas em Alimentação) da UNICAMP.
+**Base de Dados**: [TACO 2011 - UNICAMP](https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/legislacao-de-produtos-origem-vegetal/biblioteca-de-normas-vinhos-e-bebidas/tabela-brasileira-de-composicao-de-alimentos_taco_2011.pdf)
 
-- **Fonte oficial**: [TACO 2011 - Gov.br](https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/legislacao-de-produtos-origem-vegetal/biblioteca-de-normas-vinhos-e-bebidas/tabela-brasileira-de-composicao-de-alimentos_taco_2011.pdf)
-- **Repositório**: [GitHub - machine-learning-mocha/taco](https://github.com/machine-learning-mocha/taco/blob/main/formatados/alimentos.csv)
-
-## 🧬 Abordagem da Solução
+## 🧬 Implementação
 
 ### Representação Genética
-No contexto deste problema, a representação genética é estruturada da seguinte forma:
-
-- **Gene**: Um alimento específico (ex: "Arroz, tipo 1, cozido")
-- **Cromossomo**: Uma refeição completa com 3 alimentos (ex: café da manhã)
-- **Indivíduo**: Um cardápio completo com 3 refeições (café da manhã, almoço e jantar)
+- **Gene**: Alimento específico (ex: "Arroz, tipo 1, cozido")
+- **Cromossomo**: Refeição com 3 alimentos 
+- **Indivíduo**: Cardápio completo (café da manhã, almoço, jantar)
 
 ### Algoritmo Genético
-Utilização de computação evolutiva para otimizar cardápios através de:
-- **Representação**: Cardápio com 3 refeições, cada uma com 3 alimentos
-- **Seleção**: Torneio com 3 competidores
-- **Cruzamento**: Herança aleatória de refeições dos pais
-- **Mutação**: Por refeição completa ou por alimento individual
-- **Elitismo**: Percentual configurável dos melhores indivíduos preservados (padrão: 10%)
 
-### Variações Implementadas
-1. **Algoritmo Genético Básico** - Implementação padrão com seleção por torneio e mutação por refeição completa
-2. **Algoritmo com Elitismo** - Preserva os 10% melhores indivíduos por geração
-3. **Elitismo + Mutação por Alimento** - Elitismo com mutação granular (substitui alimentos individuais)
-
-## 🛠️ Implementação
-
-### Tecnologias Utilizadas
-- **Python 3.8+** - Linguagem principal
-- **Pandas** - Manipulação da base de dados nutricional
-- **Matplotlib** - Visualização de resultados
-- **Jupyter Notebook** - Ambiente de desenvolvimento
-
-### Parâmetros do Sistema
+**Função de Fitness**
 ```python
-TAMANHO_POPULACAO = 30      # Indivíduos por geração
-NUMERO_GERACOES = 1000      # Limite de evolução
-TAXA_MUTACAO = 0.5          # Probabilidade de mutação
-TAXA_ELITISMO = 0.1         # Percentual dos melhores preservados (10%)
-TAMANHO_TORNEIO = 3         # Seleção por torneio
-ALIMENTOS_POR_REFEICAO = 3  # Restrição prática
+fitness = -Σ|valor_atual - meta| para todos os nutrientes
 ```
 
-### Estrutura do Projeto
+**Operadores Implementados**
+- **Seleção**: Torneio (k=3)
+- **Cruzamento**: Herança completa de refeições entre pais
+- **Mutação**: Por refeição completa ou por alimento individual
+- **Elitismo**: Preserva 10% dos melhores indivíduos
+
+### Variações Testadas
+
+| Variação | Elitismo | Mutação | Objetivo |
+|----------|----------|---------|----------|
+| **AG Básico** | ❌ | Por refeição | Exploração ampla |
+| **AG + Elitismo** | ✅ | Por refeição | Preservar melhores |
+| **AG + Granular** | ✅ | Por alimento | Refinamento fino |
+
+## 📊 Resultados
+
+### Parâmetros de Teste
+```python
+POPULACAO = 30 | GERACOES = 1000 | MUTACAO = 50% | ELITISMO = 10%
+```
+
+### Performance dos Algoritmos
+
+| Algoritmo | Fitness | Energia | Proteína | Carboidrato | Lipídeos |
+|-----------|---------|---------|----------|-------------|----------|
+| **AG Básico** | -14.20 | 100.0% | 97.3% | 96.5% | 96.1% |
+| **AG + Elitismo** | -7.20 | 100.0% | 93.6% | 99.7% | 99.1% |
+| **AG + Granular** | -8.10 | 100.0% | 97.3% | 99.7% | 92.4% |
+
+### Principais Achados
+- **Elitismo** melhorou consistentemente a qualidade das soluções (49% melhor fitness)
+- **Mutação granular** permitiu refinamentos incrementais
+- Todos os algoritmos atingiram **>92% de precisão** em todos os nutrientes
+- **Convergência** demonstrada ao longo de 1000 gerações
+
+## 🔬 Conclusão
+
+### Eficácia dos Algoritmos Genéticos
+Os resultados demonstram que **algoritmos genéticos são altamente eficazes** para otimização nutricional, atingindo **>92% de precisão** em todos os nutrientes com convergência consistente.
+
+### Insights Principais
+- **Elitismo**: Estratégia mais impactante, melhorando fitness em 49%
+- **Mutação granular**: Eficaz para refinamentos incrementais
+- **Múltiplas estratégias**: Diferentes abordagens podem ser eficazes dependendo do contexto
+
+## 🛠️ Execução
+
+### Tecnologias
+- **Python 3.8+** | **Pandas** | **Matplotlib** | **Jupyter Notebook**
+
+### Estrutura
 ```
 IADT-Fase-2/
-├── IADT_Fase_2.ipynb     # Implementação completa dos algoritmos
-├── alimentos.csv         # Base de dados nutricional (TACO 2011)
-├── requirements.txt      # Dependências do sistema
-└── README.md             # Documentação do projeto
+├── IADT_Fase_2.ipynb     # Implementação dos algoritmos
+├── alimentos.csv         # Base TACO 2011
+├── requirements.txt      # Dependências
+└── README.md             # Documentação
 ```
 
-## 🚀 Como Executar
-
+### Como Executar
 ```bash
-# 1. Instale as dependências
+# Instalar dependências
 pip install -r requirements.txt
 
-# 2. Execute o notebook
+# Executar notebook
 jupyter notebook IADT_Fase_2.ipynb
 ```
-
-### Funcionalidades do Notebook
-- Executar os três algoritmos implementados
-- Visualizar a evolução da aptidão por geração
-- Comparar resultados entre as variações
-- Examinar cardápios gerados e seus valores nutricionais
-
-## 📊 Resultados e Análise
-
-### Metodologia de Testes
-- Mesma população inicial para todas as variações (comparação justa)
-- Função de aptidão baseada no desvio das metas nutricionais
-- Gráficos de evolução da aptidão ao longo das gerações
-
-### Saídas do Sistema
-- Melhor cardápio encontrado para cada algoritmo
-- Valores nutricionais calculados vs. metas
-- Gráficos comparativos de evolução
-- Resumo quantitativo de performance
