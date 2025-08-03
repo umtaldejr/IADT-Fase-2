@@ -15,8 +15,8 @@ Este projeto aborda a **otimização de cardápios nutricionais** usando algorit
 | Nutriente   | Meta Diária |
 | ----------- | ----------- |
 | Energia     | 2000 kcal   |
-| Proteína    | 75g         |
 | Carboidrato | 275g        |
+| Proteína    | 75g         |
 | Lipídeos    | 70g         |
 
 ## 🧬 Implementação
